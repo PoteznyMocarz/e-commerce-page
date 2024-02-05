@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="output.css">
+  <title>Frontend Mentor | E-commerce product page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="custom-classes.css">
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+</head>
+<body class="font-kumbhSans relative h-fit lg:h-[100vh]">
+<div class="flex p-5 h-fit justify-between items-center relative z-10 lg:max-w-[1200px] lg:left-[50%] lg:translate-x-[-50%] lg:py-[30px] lg:border-b-[1px] lg:border-[#5e5e5e37]">
+  <div class="flex h-fit items-center gap-3">
+    <img id="menuBtn" class="object-none mt-1 lg:hidden" src="/images/icon-menu.svg" alt="">
+    <img class="object-none cursor-pointer" src="/images/logo.svg" alt="">
+    <div class="hidden lg:flex lg:gap-9 lg:ml-[60px]">
+      <span class="cursor-pointer opacity-70 hover:opacity-100 relative after:content-[''] after:absolute after:h-[3px] after:w-full after:bottom-[-43px] after:left-0 after:bg-[#ff7c1a] after:hidden hover:after:inline">Collections</span>
+      <span class="cursor-pointer opacity-70 hover:opacity-100 relative after:content-[''] after:absolute after:h-[3px] after:w-full after:bottom-[-43px] after:left-0 after:bg-[#ff7c1a] after:hidden hover:after:inline">Men</span>
+      <span class="cursor-pointer opacity-70 hover:opacity-100 relative after:content-[''] after:absolute after:h-[3px] after:w-full after:bottom-[-43px] after:left-0 after:bg-[#ff7c1a] after:hidden hover:after:inline">Women</span>
+      <span class="cursor-pointer opacity-70 hover:opacity-100 relative after:content-[''] after:absolute after:h-[3px] after:w-full after:bottom-[-43px] after:left-0 after:bg-[#ff7c1a] after:hidden hover:after:inline">About</span>
+      <span class="cursor-pointer opacity-70 hover:opacity-100 relative after:content-[''] after:absolute after:h-[3px] after:w-full after:bottom-[-43px] after:left-0 after:bg-[#ff7c1a] after:hidden hover:after:inline">Contact</span>
+    </div>
+  </div>
+
+  <div class="flex gap-6 lg:gap-[35px] z-10">
+    <div class="flex relative z-10">
+      <div class="flex relative group">
+        <svg id="cartIcon" width="22" class="object-none cursor-pointer self-center" height="20" xmlns="http://www.w3.org/2000/svg"><path class="group-hover:fill-[#000000]" d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z" fill="#69707D" fill-rule="nonzero"/></svg>
+        <span id="basketAmountTotal" class="bg-[#ff7d1a] text-white absolute px-2 text-[10px] hidden rounded-[10px] right-[-7px] top-[5px] max-[450px]:top-[-2px]"></span>
+      </div>
+      <div id="basketDesktop" class="absolute hidden lg:w-[350px]  min-h-[237px] z-10 h-fit lg:pb-6 bg-white top-[60px] left-[-160px] shadow-2xl rounded-[14px] flex flex-col">
+        <h2 class="font-bold w-full border-b-[1px] border-[#38383834] p-5">Cart</h2>
+        <div id="itemsInBasket" class="p-5 flex h-fit items-center hidden">
+          <img class="h-[60px] w-[60px] rounded-[5px]" src="/images/image-product-1-thumbnail.jpg" alt="">
+          <span class="text-[16px] ml-3 leading-6">Fall Limited Edition Sneakers <span>$125.00</span> x <span id="amountOfItems">3</span> <span class="font-bold">$</span><span id="totalPrice" class="font-bold"></span><span class="font-bold">.00</span></span>
+          <img id="deleteBtn" class="cursor-pointer" src="/images/icon-delete.svg" alt="">
+        </div>
+        
+        <button id="checkBtn" class="w-[88%] bg-[#ff7d1a] self-center py-3 text-[18px] text-white font-bold rounded-[12px] hidden">Checkout</button>
+        <span id="emptyBasketText" class="text-center relative mt-[20%] font-bold text-[#404040c7]">Your cart is empty.</span>
+      </div>
+    </div>
+    <img class="h-[27px] w-[27px] lg:h-[46px] lg:w-[46px] cursor-pointer border-2 border-transparent hover:border-[#ff7c1a] rounded-full" src="/images/image-avatar.png" alt="">
+  </div>
+</div>
+
+<!-- add flex -->
+<div id="menu" class="absolute flex-col flex w-[70%] bg-white h-[100vh] z-10 top-0 font-bold p-8 text-[22px] gap-3 hidden">
+  <img id="menuClose" class="h-[20px] w-[20px] mb-[40px]" src="/images/icon-close.svg" alt="">
+  <span>Collections</span>
+  <span>Men</span>
+  <span>Women</span>
+  <span>About</span>
+  <span>Contact</span>
+</div>
+<div class="lg:flex lg:h-[83vh] lg:items-center lg:scale-[0.95]">
+<div class="flex flex-col lg:flex-row lg:relative lg:left-[50%] lg:translate-x-[-50%] lg:gap-[100px]">
+<div class="lg:flex lg:flex-col max-w-[500px] lg:gap-4">
+  <div id="MainImgContainer" class="w-full max-h-[320px] overflow-hidden relative mt-1 lg:max-h-[500px] max-w-[500px] lg:rounded-[20px] cursor-pointer">
+    <div id="basketMobile" class="absolute hidden w-[95%] h-[260px] z-10 lg:pb-6 bg-white top-[20px] left-[50%] translate-x-[-50%] shadow-2xl rounded-[14px] flex flex-col">
+      <h2 class="font-bold w-full border-b-[1px] border-[#38383834] p-5">Cart</h2>
+      <img id="closeIconBasket" class="absolute right-6 top-6" src="/images/icon-close.svg" alt="">
+      <div id="itemsInBasketMobile" class="p-5 flex h-fit items-center hidden">
+        <img class="h-[60px] w-[60px] rounded-[5px]" src="/images/image-product-1-thumbnail.jpg" alt="">
+        <span class="text-[16px] ml-3 leading-6">Fall Limited Edition Sneakers <span>$125.00</span> x <span id="amountOfItemsMobile">3</span> <span class="font-bold">$</span><span id="totalPriceMobile" class="font-bold">375</span><span class="font-bold">.00</span></span>
+        <img id="deleteBtnMobile" src="/images/icon-delete.svg" alt="">
+      </div>
+      <button id="checkBtnMobile" class="w-[88%] bg-[#ff7d1a] self-center py-4 text-white font-bold text-[18px] rounded-[12px] hidden">Checkout</button>
+      <span id="emptyBasketTextMobile" class="text-center relative mt-[20%] font-bold text-[#404040c7]">Your cart is empty.</span>
+    </div>
+    <img id="arrowLeftMobile" class="absolute left-[15px] top-[50%] translate-y-[-50%] bg-[#fcfcfc] px-[15px] py-[12px] h-fit w-fit flex justify-center rounded-full lg:hidden" src="/images/icon-previous.svg" alt="">
+    <img id="slideMobile1" class="w-full h-full hidden active-slide-main" src="/images/image-product-1.jpg" alt="">
+    <img id="slideMobile2"class="w-full h-full hidden" src="/images/image-product-2.jpg" alt="">
+    <img id="slideMobile3" class="w-full h-full hidden" src="/images/image-product-3.jpg" alt="">
+    <img id="slideMobile4" class="w-full h-full hidden" src="/images/image-product-4.jpg" alt="">
+    <img id="arrowRightMobile" class="absolute right-[15px] top-[50%] translate-y-[-50%] bg-[#fcfcfc] px-[15px] py-[12px] h-fit w-fit flex justify-center rounded-full lg:hidden" src="/images/icon-next.svg" alt="">
+  </div>
+
+  <div class="hidden lg:grid lg:grid-cols-4 lg:max-w-[500px] gap-8">
+    <img id="thumbnail1Main" class="rounded-[14px] cursor-pointer border-[3px] border-transparent hover:opacity-50 transition-all thumbnail-active-main" src="/images/image-product-1-thumbnail.jpg" alt="">
+    <img id="thumbnail2Main" class="rounded-[14px] cursor-pointer border-[3px] border-transparent hover:opacity-50 transition-all" src="/images/image-product-2-thumbnail.jpg" alt="">
+    <img id="thumbnail3Main" class="rounded-[14px] cursor-pointer border-[3px] border-transparent hover:opacity-50 transition-all" src="/images/image-product-3-thumbnail.jpg" alt="">
+    <img id="thumbnail4Main" class="rounded-[14px] cursor-pointer border-[3px] border-transparent hover:opacity-50 transition-all" src="/images/image-product-4-thumbnail.jpg" alt="">
+  </div>
+</div>
+
+<div class="flex flex-col p-6 max-w-[580px] lg:mt-[50px] relative top-auto left-auto">
+  <span class="text-[#ff7c1a] font-bold uppercase text-[13px] tracking-widest lg:text-[16px]">Sneaker Company</span>
+
+  <h1 class="font-bold text-[29px] relative mt-2 leading-9 lg:text-[49px] lg:leading-[50px] lg:mt-5">Fall Limited Edition Sneakers</h1>
+
+  <p class="text-[#68707d] text-[16px] mt-4 lg:text-[20px] lg:mt-[40px]">These low-profile sneakers are your perfect casual wear companion. Featuring a 
+  durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
+
+  <div class="flex h-fit items-center justify-between mt-5 lg:flex-col lg:items-start">
+    <div class="flex h-fit items-center gap-3">
+      <span class="font-bold text-[29px] lg:text-[33px]">$125.00</span>
+      <span class="text-[#ff7d1a] font-bold bg-[#ffede0] px-2 rounded-[6px] lg:text-[18px]">50%</span>
+    </div>
+    <span class="text-[#b6bcc8] font-bold text-[19px] line-through lg:text-[22px]">$250.00</span>
+  </div>
+
+  <div class="flex flex-col mt-3 gap-4 lg:flex-row lg:mt-[40px]">
+    <div class="w-full flex justify-between bg-[#f8fcfc] py-4 px-4 rounded-[12px] shadow-sm lg:w-[35%]">
+      <img id="removeItem" class="object-none cursor-pointer" src="/images/icon-minus.svg" alt="">
+      <span id="itemsToAdd" class="font-bold text-[17px]">0</span>
+      <img id="addItem" class="object-none cursor-pointer" src="/images/icon-plus.svg" alt="">
+    </div>
+    <button id="submitBtn" class="flex bg-[#ff7d1a] text-[17px] h-fit justify-center items-center py-4 px-4 rounded-[12px] shadow-sm gap-3 lg:w-[60%]">
+      <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z" fill="#ffffff" fill-rule="nonzero"/></svg>
+      <span class="font-bold text-white">Add to cart</span>
+    </button>
+  </div>
+
+</div>
+</div>
+</div>
+
+<div id="lightBox" class="absolute z-20 h-[100vh] w-[100vw] left-0 top-0 flex justify-center items-center bg-[#0000009b] flex-col gap-[40px] hidden">
+  <div class="w-full relative max-h-[550px] mt-1 max-w-[550px] lg:rounded-[20px]">
+    <svg id="closeIcon" class="absolute right-[10px] top-[-40px] scale-[1.5] cursor-pointer group" width="14" height="15" xmlns="http://www.w3.org/2000/svg"><path class="group-hover:fill-[#ff7d1a]" d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z" fill="#69707D" fill-rule="evenodd"/></svg>
+    <img id="arrowLeft" class="absolute left-[-25px] top-[50%] translate-y-[-50%] bg-[#fcfcfc] px-[20px] py-[17px] h-fit w-fit flex justify-center rounded-full cursor-pointer" src="/images/icon-previous.svg" alt="">
+    <img id="slide1" class="w-full h-full hidden rounded-[20px] active-slide" src="/images/image-product-1.jpg" alt="">
+    <img id="slide2" class="w-full h-full hidden rounded-[20px]" src="/images/image-product-2.jpg" alt="">
+    <img id="slide3" class="w-full h-full hidden rounded-[20px]" src="/images/image-product-3.jpg" alt="">
+    <img id="slide4" class="w-full h-full hidden rounded-[20px]" src="/images/image-product-4.jpg" alt="">
+    <img id="arrowRight" class="absolute right-[-25px] top-[50%] translate-y-[-50%] bg-[#fcfcfc] px-[20px] py-[17px] h-fit w-fit flex justify-center rounded-full cursor-pointer" src="/images/icon-next.svg" alt="">
+  </div>
+  <div class="grid grid-cols-4 max-w-[490px] gap-7">
+    <img id="thumbnail1" class="rounded-[14px] cursor-pointer border-[3px] border-transparent hover:opacity-50 transition-all thumbnail-active" src="/images/image-product-1-thumbnail.jpg" alt="">
+    <img id="thumbnail2" class="rounded-[14px] cursor-pointer border-[3px] border-transparent hover:opacity-50 transition-all" src="/images/image-product-2-thumbnail.jpg" alt="">
+    <img id="thumbnail3" class="rounded-[14px] cursor-pointer border-[3px] border-transparent hover:opacity-50 transition-all" src="/images/image-product-3-thumbnail.jpg" alt="">
+    <img id="thumbnail4" class="rounded-[14px] cursor-pointer border-[3px] border-transparent hover:opacity-50 transition-all" src="/images/image-product-4-thumbnail.jpg" alt="">
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
+
+
